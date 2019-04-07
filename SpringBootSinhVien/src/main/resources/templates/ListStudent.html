@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>List Student</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="css/ListStudent.css"/>
+  <link rel="stylesheet" href="css/boostrap.min.css">
+</head>
+<body>
+<div class="container">
+  <form>
+    <div class="row">
+      <img class="col-sm" src="css/boostrap.min.css">
+      <p class="col-sm" style="text-align: right" th:text="${user_name}"></p>
+      <a class="alert-link col-sm" th:href="@{/Logout}">Logout</a>
+    </div>
+    <div class="row">
+      <label class="col-sm-2">Student Code:</label>
+      <div class="col-sm-5">
+        <input type="text" class="form-control" id="student_code">
+      </div>
+    </div>
+    <div class="row">
+      <label class="col-sm-2">Student Name:</label>
+      <div class="col-sm-5">
+        <input type="text" class="form-control" id="student_name">
+      </div>
+      <div class="col-sm-1">
+        <input type="button" class="btn-dark" value="Search">
+      </div>
+    </div>
+    <div class="row">
+      <label class="col-sm-2">Birthday:</label>
+      <div class="col-sm-5">
+        <input type="text" class="form-control" id="date_of_birth">
+      </div>
+      <div class="col-sm-1">
+        <a th:href = "@{/AddStudent}"><input type="button" class="btn-dark" value="Add Student"></a>
+        
+      </div>
+    </div>
+  </form>
+  <table class="table">
+    <thead class="table-dark">
+    <tr>
+      <th>No</th>
+      <th>Code</th>
+      <th>Name</th>
+      <th>Birthday</th>
+      <th>Address</th>
+      <th>Score</th>
+      <th>Edit</th>
+    </tr>
+    </thead>
+    <tr th:each="student : ${liststudent}">
+      <th th:text="${student.getInfoId()}"></th>
+      <th th:text="${student.student.getStudentCode()}"></th>
+ 	  <th th:text="${student.student.getStudentName()}"></th>
+  	  <th th:text="${student.getBirthDay()}"></th>
+   	  <th th:text="${student.getAddressStudent()}"></th>
+   	  <th th:text="${student.getAverageScore()}"></th>
+      <th>Edit Delete</th>
+    </tr>  
+  </table>
+</div>
+</body>
+</html>
